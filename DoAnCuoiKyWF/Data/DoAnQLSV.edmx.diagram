@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f5746109f92d46668bf96f862d009750" Name="Diagram1" ZoomLevel="80">
+        <EntityTypeShape EntityType="DoAn_QLSVModel.ChucVu" Width="1.5" PointX="10" PointY="0.875" />
+        <EntityTypeShape EntityType="DoAn_QLSVModel.DangKy" Width="1.5" PointX="7.5" PointY="7.75" />
+        <EntityTypeShape EntityType="DoAn_QLSVModel.GiaoVien" Width="1.5" PointX="3" PointY="8.75" />
+        <EntityTypeShape EntityType="DoAn_QLSVModel.KetQua" Width="1.5" PointX="7.5" PointY="4.625" />
+        <EntityTypeShape EntityType="DoAn_QLSVModel.Khoa" Width="1.5" PointX="0.75" PointY="4.875" />
+        <EntityTypeShape EntityType="DoAn_QLSVModel.Lop" Width="1.5" PointX="3" PointY="4.75" />
+        <EntityTypeShape EntityType="DoAn_QLSVModel.MonHoc" Width="1.5" PointX="5.25" PointY="6.875" />
+        <EntityTypeShape EntityType="DoAn_QLSVModel.NamHoc" Width="1.5" PointX="0.75" PointY="1.875" />
+        <EntityTypeShape EntityType="DoAn_QLSVModel.SinhVien" Width="1.5" PointX="5.25" PointY="2.25" />
+        <EntityTypeShape EntityType="DoAn_QLSVModel.user_pass" Width="1.5" PointX="7.75" PointY="0.875" />
+        <AssociationConnector Association="DoAn_QLSVModel.FK_ChucVu_user_pass1" />
+        <AssociationConnector Association="DoAn_QLSVModel.FK_DangKy_MonHoc" />
+        <AssociationConnector Association="DoAn_QLSVModel.FK_DangKy_SinhVien" />
+        <AssociationConnector Association="DoAn_QLSVModel.FK_GiaoVien_Khoa" />
+        <AssociationConnector Association="DoAn_QLSVModel.FK_KetQua_MonHoc" />
+        <AssociationConnector Association="DoAn_QLSVModel.FK_KetQua_NamHoc" />
+        <AssociationConnector Association="DoAn_QLSVModel.FK_KetQua_SinhVien" />
+        <AssociationConnector Association="DoAn_QLSVModel.FK_Lop_Khoa" />
+        <AssociationConnector Association="DoAn_QLSVModel.FK_MonHoc_Khoa1" />
+        <AssociationConnector Association="DoAn_QLSVModel.FK_Lop_NamHoc" />
+        <AssociationConnector Association="DoAn_QLSVModel.FK_SinhVien_Lop" />
+        <AssociationConnector Association="DoAn_QLSVModel.PhanCong" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

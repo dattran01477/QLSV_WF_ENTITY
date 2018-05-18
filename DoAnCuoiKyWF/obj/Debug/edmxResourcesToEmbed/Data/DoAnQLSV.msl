@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DoAn_QLSVModelStoreContainer" CdmEntityContainer="DoAn_QLSVEntities1">
+    <EntitySetMapping Name="ChucVus">
+      <EntityTypeMapping TypeName="DoAn_QLSVModel.ChucVu">
+        <MappingFragment StoreEntitySet="ChucVu">
+          <ScalarProperty Name="ChucVu1" ColumnName="ChucVu" />
+          <ScalarProperty Name="mstk" ColumnName="mstk" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DangKies">
+      <EntityTypeMapping TypeName="DoAn_QLSVModel.DangKy">
+        <MappingFragment StoreEntitySet="DangKy">
+          <ScalarProperty Name="NgayDangKy" ColumnName="NgayDangKy" />
+          <ScalarProperty Name="NgayKetThucMon" ColumnName="NgayKetThucMon" />
+          <ScalarProperty Name="msSinhVien" ColumnName="msSinhVien" />
+          <ScalarProperty Name="msMon" ColumnName="msMon" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GiaoViens">
+      <EntityTypeMapping TypeName="DoAn_QLSVModel.GiaoVien">
+        <MappingFragment StoreEntitySet="GiaoVien">
+          <ScalarProperty Name="msKhoa" ColumnName="msKhoa" />
+          <ScalarProperty Name="msGiaoVienQL" ColumnName="msGiaoVienQL" />
+          <ScalarProperty Name="gioiTinh" ColumnName="gioiTinh" />
+          <ScalarProperty Name="tuoi" ColumnName="tuoi" />
+          <ScalarProperty Name="hoTen" ColumnName="hoTen" />
+          <ScalarProperty Name="msGV" ColumnName="msGV" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KetQuas">
+      <EntityTypeMapping TypeName="DoAn_QLSVModel.KetQua">
+        <MappingFragment StoreEntitySet="KetQua">
+          <ScalarProperty Name="msNamHoc" ColumnName="msNamHoc" />
+          <ScalarProperty Name="Diem" ColumnName="Diem" />
+          <ScalarProperty Name="msSinhVien" ColumnName="msSinhVien" />
+          <ScalarProperty Name="msMon" ColumnName="msMon" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Khoas">
+      <EntityTypeMapping TypeName="DoAn_QLSVModel.Khoa">
+        <MappingFragment StoreEntitySet="Khoa">
+          <ScalarProperty Name="maKhoa" ColumnName="maKhoa" />
+          <ScalarProperty Name="tenKhoa" ColumnName="tenKhoa" />
+          <ScalarProperty Name="diaDiem" ColumnName="diaDiem" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lops">
+      <EntityTypeMapping TypeName="DoAn_QLSVModel.Lop">
+        <MappingFragment StoreEntitySet="Lop">
+          <ScalarProperty Name="siSo" ColumnName="siSo" />
+          <ScalarProperty Name="msNamNhapHoc" ColumnName="msNamNhapHoc" />
+          <ScalarProperty Name="msKhoa" ColumnName="msKhoa" />
+          <ScalarProperty Name="tenLop" ColumnName="tenLop" />
+          <ScalarProperty Name="maLop" ColumnName="maLop" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MonHocs">
+      <EntityTypeMapping TypeName="DoAn_QLSVModel.MonHoc">
+        <MappingFragment StoreEntitySet="MonHoc">
+          <ScalarProperty Name="msKhoa" ColumnName="msKhoa" />
+          <ScalarProperty Name="msMon" ColumnName="msMon" />
+          <ScalarProperty Name="tenMonHoc" ColumnName="tenMonHoc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NamHocs">
+      <EntityTypeMapping TypeName="DoAn_QLSVModel.NamHoc">
+        <MappingFragment StoreEntitySet="NamHoc">
+          <ScalarProperty Name="tgKetThuc" ColumnName="tgKetThuc" />
+          <ScalarProperty Name="tgBatDau" ColumnName="tgBatDau" />
+          <ScalarProperty Name="tenNamHoc" ColumnName="tenNamHoc" />
+          <ScalarProperty Name="msNamHoc" ColumnName="msNamHoc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SinhViens">
+      <EntityTypeMapping TypeName="DoAn_QLSVModel.SinhVien">
+        <MappingFragment StoreEntitySet="SinhVien">
+          <ScalarProperty Name="msKhoa" ColumnName="msKhoa" />
+          <ScalarProperty Name="msLop" ColumnName="msLop" />
+          <ScalarProperty Name="ngaySinh" ColumnName="ngaySinh" />
+          <ScalarProperty Name="mssv" ColumnName="mssv" />
+          <ScalarProperty Name="sdt" ColumnName="sdt" />
+          <ScalarProperty Name="hoTen" ColumnName="hoTen" />
+          <ScalarProperty Name="tuoi" ColumnName="tuoi" />
+          <ScalarProperty Name="gioiTinh" ColumnName="gioiTinh" />
+          <ScalarProperty Name="diaChi" ColumnName="diaChi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="user_pass">
+      <EntityTypeMapping TypeName="DoAn_QLSVModel.user_pass">
+        <MappingFragment StoreEntitySet="user_pass">
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="msTK" ColumnName="msTK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="PhanCong" TypeName="DoAn_QLSVModel.PhanCong" StoreEntitySet="PhanCong">
+      <EndProperty Name="MonHoc">
+        <ScalarProperty Name="msMon" ColumnName="msMH" />
+      </EndProperty>
+      <EndProperty Name="GiaoVien">
+        <ScalarProperty Name="msGV" ColumnName="msGV" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

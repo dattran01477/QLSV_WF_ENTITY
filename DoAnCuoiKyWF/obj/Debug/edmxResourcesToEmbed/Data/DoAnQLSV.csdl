@@ -1,0 +1,317 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DoAn_QLSVModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="DoAn_QLSVEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ChucVus" EntityType="DoAn_QLSVModel.ChucVu" />
+    <EntitySet Name="DangKies" EntityType="DoAn_QLSVModel.DangKy" />
+    <EntitySet Name="GiaoViens" EntityType="DoAn_QLSVModel.GiaoVien" />
+    <EntitySet Name="KetQuas" EntityType="DoAn_QLSVModel.KetQua" />
+    <EntitySet Name="Khoas" EntityType="DoAn_QLSVModel.Khoa" />
+    <EntitySet Name="Lops" EntityType="DoAn_QLSVModel.Lop" />
+    <EntitySet Name="MonHocs" EntityType="DoAn_QLSVModel.MonHoc" />
+    <EntitySet Name="NamHocs" EntityType="DoAn_QLSVModel.NamHoc" />
+    <EntitySet Name="SinhViens" EntityType="DoAn_QLSVModel.SinhVien" />
+    <EntitySet Name="user_pass" EntityType="DoAn_QLSVModel.user_pass" />
+    <AssociationSet Name="FK_ChucVu_user_pass1" Association="DoAn_QLSVModel.FK_ChucVu_user_pass1">
+      <End Role="user_pass" EntitySet="user_pass" />
+      <End Role="ChucVu" EntitySet="ChucVus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DangKy_MonHoc" Association="DoAn_QLSVModel.FK_DangKy_MonHoc">
+      <End Role="MonHoc" EntitySet="MonHocs" />
+      <End Role="DangKy" EntitySet="DangKies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DangKy_SinhVien" Association="DoAn_QLSVModel.FK_DangKy_SinhVien">
+      <End Role="SinhVien" EntitySet="SinhViens" />
+      <End Role="DangKy" EntitySet="DangKies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GiaoVien_Khoa" Association="DoAn_QLSVModel.FK_GiaoVien_Khoa">
+      <End Role="Khoa" EntitySet="Khoas" />
+      <End Role="GiaoVien" EntitySet="GiaoViens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KetQua_MonHoc" Association="DoAn_QLSVModel.FK_KetQua_MonHoc">
+      <End Role="MonHoc" EntitySet="MonHocs" />
+      <End Role="KetQua" EntitySet="KetQuas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KetQua_NamHoc" Association="DoAn_QLSVModel.FK_KetQua_NamHoc">
+      <End Role="NamHoc" EntitySet="NamHocs" />
+      <End Role="KetQua" EntitySet="KetQuas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KetQua_SinhVien" Association="DoAn_QLSVModel.FK_KetQua_SinhVien">
+      <End Role="SinhVien" EntitySet="SinhViens" />
+      <End Role="KetQua" EntitySet="KetQuas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Lop_Khoa" Association="DoAn_QLSVModel.FK_Lop_Khoa">
+      <End Role="Khoa" EntitySet="Khoas" />
+      <End Role="Lop" EntitySet="Lops" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MonHoc_Khoa1" Association="DoAn_QLSVModel.FK_MonHoc_Khoa1">
+      <End Role="Khoa" EntitySet="Khoas" />
+      <End Role="MonHoc" EntitySet="MonHocs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Lop_NamHoc" Association="DoAn_QLSVModel.FK_Lop_NamHoc">
+      <End Role="NamHoc" EntitySet="NamHocs" />
+      <End Role="Lop" EntitySet="Lops" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SinhVien_Lop" Association="DoAn_QLSVModel.FK_SinhVien_Lop">
+      <End Role="Lop" EntitySet="Lops" />
+      <End Role="SinhVien" EntitySet="SinhViens" />
+    </AssociationSet>
+    <AssociationSet Name="PhanCong" Association="DoAn_QLSVModel.PhanCong">
+      <End Role="GiaoVien" EntitySet="GiaoViens" />
+      <End Role="MonHoc" EntitySet="MonHocs" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="ChucVu">
+    <Key>
+      <PropertyRef Name="mstk" />
+    </Key>
+    <Property Name="mstk" Type="Int32" Nullable="false" />
+    <Property Name="ChucVu1" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="user_pass" Relationship="DoAn_QLSVModel.FK_ChucVu_user_pass1" FromRole="ChucVu" ToRole="user_pass" />
+  </EntityType>
+  <EntityType Name="DangKy">
+    <Key>
+      <PropertyRef Name="msMon" />
+      <PropertyRef Name="msSinhVien" />
+    </Key>
+    <Property Name="msMon" Type="Int32" Nullable="false" />
+    <Property Name="msSinhVien" Type="Int32" Nullable="false" />
+    <Property Name="NgayKetThucMon" Type="DateTime" Precision="0" />
+    <Property Name="NgayDangKy" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="MonHoc" Relationship="DoAn_QLSVModel.FK_DangKy_MonHoc" FromRole="DangKy" ToRole="MonHoc" />
+    <NavigationProperty Name="SinhVien" Relationship="DoAn_QLSVModel.FK_DangKy_SinhVien" FromRole="DangKy" ToRole="SinhVien" />
+  </EntityType>
+  <EntityType Name="GiaoVien">
+    <Key>
+      <PropertyRef Name="msGV" />
+    </Key>
+    <Property Name="msGV" Type="Int32" Nullable="false" />
+    <Property Name="hoTen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="tuoi" Type="Int32" />
+    <Property Name="gioiTinh" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="msGiaoVienQL" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="msKhoa" Type="Int32" />
+    <NavigationProperty Name="Khoa" Relationship="DoAn_QLSVModel.FK_GiaoVien_Khoa" FromRole="GiaoVien" ToRole="Khoa" />
+    <NavigationProperty Name="MonHocs" Relationship="DoAn_QLSVModel.PhanCong" FromRole="GiaoVien" ToRole="MonHoc" />
+  </EntityType>
+  <EntityType Name="KetQua">
+    <Key>
+      <PropertyRef Name="msMon" />
+      <PropertyRef Name="msSinhVien" />
+    </Key>
+    <Property Name="msMon" Type="Int32" Nullable="false" />
+    <Property Name="msSinhVien" Type="Int32" Nullable="false" />
+    <Property Name="Diem" Type="Double" />
+    <Property Name="msNamHoc" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="MonHoc" Relationship="DoAn_QLSVModel.FK_KetQua_MonHoc" FromRole="KetQua" ToRole="MonHoc" />
+    <NavigationProperty Name="NamHoc" Relationship="DoAn_QLSVModel.FK_KetQua_NamHoc" FromRole="KetQua" ToRole="NamHoc" />
+    <NavigationProperty Name="SinhVien" Relationship="DoAn_QLSVModel.FK_KetQua_SinhVien" FromRole="KetQua" ToRole="SinhVien" />
+  </EntityType>
+  <EntityType Name="Khoa">
+    <Key>
+      <PropertyRef Name="maKhoa" />
+    </Key>
+    <Property Name="diaDiem" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="tenKhoa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="maKhoa" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="GiaoViens" Relationship="DoAn_QLSVModel.FK_GiaoVien_Khoa" FromRole="Khoa" ToRole="GiaoVien" />
+    <NavigationProperty Name="Lops" Relationship="DoAn_QLSVModel.FK_Lop_Khoa" FromRole="Khoa" ToRole="Lop" />
+    <NavigationProperty Name="MonHocs" Relationship="DoAn_QLSVModel.FK_MonHoc_Khoa1" FromRole="Khoa" ToRole="MonHoc" />
+  </EntityType>
+  <EntityType Name="Lop">
+    <Key>
+      <PropertyRef Name="maLop" />
+    </Key>
+    <Property Name="maLop" Type="Int32" Nullable="false" />
+    <Property Name="tenLop" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="msKhoa" Type="Int32" />
+    <Property Name="msNamNhapHoc" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="siSo" Type="Int32" />
+    <NavigationProperty Name="Khoa" Relationship="DoAn_QLSVModel.FK_Lop_Khoa" FromRole="Lop" ToRole="Khoa" />
+    <NavigationProperty Name="NamHoc" Relationship="DoAn_QLSVModel.FK_Lop_NamHoc" FromRole="Lop" ToRole="NamHoc" />
+    <NavigationProperty Name="SinhViens" Relationship="DoAn_QLSVModel.FK_SinhVien_Lop" FromRole="Lop" ToRole="SinhVien" />
+  </EntityType>
+  <EntityType Name="MonHoc">
+    <Key>
+      <PropertyRef Name="msMon" />
+    </Key>
+    <Property Name="tenMonHoc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="msMon" Type="Int32" Nullable="false" />
+    <Property Name="msKhoa" Type="Int32" />
+    <NavigationProperty Name="DangKies" Relationship="DoAn_QLSVModel.FK_DangKy_MonHoc" FromRole="MonHoc" ToRole="DangKy" />
+    <NavigationProperty Name="KetQuas" Relationship="DoAn_QLSVModel.FK_KetQua_MonHoc" FromRole="MonHoc" ToRole="KetQua" />
+    <NavigationProperty Name="Khoa" Relationship="DoAn_QLSVModel.FK_MonHoc_Khoa1" FromRole="MonHoc" ToRole="Khoa" />
+    <NavigationProperty Name="GiaoViens" Relationship="DoAn_QLSVModel.PhanCong" FromRole="MonHoc" ToRole="GiaoVien" />
+  </EntityType>
+  <EntityType Name="NamHoc">
+    <Key>
+      <PropertyRef Name="msNamHoc" />
+    </Key>
+    <Property Name="msNamHoc" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="tenNamHoc" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="tgBatDau" Type="DateTime" Precision="0" />
+    <Property Name="tgKetThuc" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="KetQuas" Relationship="DoAn_QLSVModel.FK_KetQua_NamHoc" FromRole="NamHoc" ToRole="KetQua" />
+    <NavigationProperty Name="Lops" Relationship="DoAn_QLSVModel.FK_Lop_NamHoc" FromRole="NamHoc" ToRole="Lop" />
+  </EntityType>
+  <EntityType Name="SinhVien">
+    <Key>
+      <PropertyRef Name="mssv" />
+    </Key>
+    <Property Name="diaChi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="gioiTinh" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="tuoi" Type="Int32" />
+    <Property Name="hoTen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sdt" Type="Int32" />
+    <Property Name="mssv" Type="Int32" Nullable="false" />
+    <Property Name="ngaySinh" Type="DateTime" Precision="0" />
+    <Property Name="msLop" Type="Int32" />
+    <Property Name="msKhoa" Type="Int32" />
+    <NavigationProperty Name="DangKies" Relationship="DoAn_QLSVModel.FK_DangKy_SinhVien" FromRole="SinhVien" ToRole="DangKy" />
+    <NavigationProperty Name="KetQuas" Relationship="DoAn_QLSVModel.FK_KetQua_SinhVien" FromRole="SinhVien" ToRole="KetQua" />
+    <NavigationProperty Name="Lop" Relationship="DoAn_QLSVModel.FK_SinhVien_Lop" FromRole="SinhVien" ToRole="Lop" />
+  </EntityType>
+  <EntityType Name="user_pass">
+    <Key>
+      <PropertyRef Name="msTK" />
+    </Key>
+    <Property Name="msTK" Type="Int32" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="ChucVu" Relationship="DoAn_QLSVModel.FK_ChucVu_user_pass1" FromRole="user_pass" ToRole="ChucVu" />
+  </EntityType>
+  <Association Name="FK_ChucVu_user_pass1">
+    <End Type="DoAn_QLSVModel.user_pass" Role="user_pass" Multiplicity="1" />
+    <End Type="DoAn_QLSVModel.ChucVu" Role="ChucVu" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="user_pass">
+        <PropertyRef Name="msTK" />
+      </Principal>
+      <Dependent Role="ChucVu">
+        <PropertyRef Name="mstk" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DangKy_MonHoc">
+    <End Type="DoAn_QLSVModel.MonHoc" Role="MonHoc" Multiplicity="1" />
+    <End Type="DoAn_QLSVModel.DangKy" Role="DangKy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MonHoc">
+        <PropertyRef Name="msMon" />
+      </Principal>
+      <Dependent Role="DangKy">
+        <PropertyRef Name="msMon" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DangKy_SinhVien">
+    <End Type="DoAn_QLSVModel.SinhVien" Role="SinhVien" Multiplicity="1" />
+    <End Type="DoAn_QLSVModel.DangKy" Role="DangKy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SinhVien">
+        <PropertyRef Name="mssv" />
+      </Principal>
+      <Dependent Role="DangKy">
+        <PropertyRef Name="msSinhVien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GiaoVien_Khoa">
+    <End Type="DoAn_QLSVModel.Khoa" Role="Khoa" Multiplicity="0..1" />
+    <End Type="DoAn_QLSVModel.GiaoVien" Role="GiaoVien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Khoa">
+        <PropertyRef Name="maKhoa" />
+      </Principal>
+      <Dependent Role="GiaoVien">
+        <PropertyRef Name="msKhoa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KetQua_MonHoc">
+    <End Type="DoAn_QLSVModel.MonHoc" Role="MonHoc" Multiplicity="1" />
+    <End Type="DoAn_QLSVModel.KetQua" Role="KetQua" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MonHoc">
+        <PropertyRef Name="msMon" />
+      </Principal>
+      <Dependent Role="KetQua">
+        <PropertyRef Name="msMon" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KetQua_NamHoc">
+    <End Type="DoAn_QLSVModel.NamHoc" Role="NamHoc" Multiplicity="0..1" />
+    <End Type="DoAn_QLSVModel.KetQua" Role="KetQua" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NamHoc">
+        <PropertyRef Name="msNamHoc" />
+      </Principal>
+      <Dependent Role="KetQua">
+        <PropertyRef Name="msNamHoc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KetQua_SinhVien">
+    <End Type="DoAn_QLSVModel.SinhVien" Role="SinhVien" Multiplicity="1" />
+    <End Type="DoAn_QLSVModel.KetQua" Role="KetQua" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SinhVien">
+        <PropertyRef Name="mssv" />
+      </Principal>
+      <Dependent Role="KetQua">
+        <PropertyRef Name="msSinhVien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Lop_Khoa">
+    <End Type="DoAn_QLSVModel.Khoa" Role="Khoa" Multiplicity="0..1" />
+    <End Type="DoAn_QLSVModel.Lop" Role="Lop" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Khoa">
+        <PropertyRef Name="maKhoa" />
+      </Principal>
+      <Dependent Role="Lop">
+        <PropertyRef Name="msKhoa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MonHoc_Khoa1">
+    <End Type="DoAn_QLSVModel.Khoa" Role="Khoa" Multiplicity="0..1" />
+    <End Type="DoAn_QLSVModel.MonHoc" Role="MonHoc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Khoa">
+        <PropertyRef Name="maKhoa" />
+      </Principal>
+      <Dependent Role="MonHoc">
+        <PropertyRef Name="msKhoa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Lop_NamHoc">
+    <End Type="DoAn_QLSVModel.NamHoc" Role="NamHoc" Multiplicity="0..1" />
+    <End Type="DoAn_QLSVModel.Lop" Role="Lop" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NamHoc">
+        <PropertyRef Name="msNamHoc" />
+      </Principal>
+      <Dependent Role="Lop">
+        <PropertyRef Name="msNamNhapHoc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SinhVien_Lop">
+    <End Type="DoAn_QLSVModel.Lop" Role="Lop" Multiplicity="0..1" />
+    <End Type="DoAn_QLSVModel.SinhVien" Role="SinhVien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lop">
+        <PropertyRef Name="maLop" />
+      </Principal>
+      <Dependent Role="SinhVien">
+        <PropertyRef Name="msLop" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PhanCong">
+    <End Type="DoAn_QLSVModel.GiaoVien" Role="GiaoVien" Multiplicity="*" />
+    <End Type="DoAn_QLSVModel.MonHoc" Role="MonHoc" Multiplicity="*" />
+  </Association>
+</Schema>

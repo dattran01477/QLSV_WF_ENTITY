@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DoAn_QLSVModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="DangKy">
+    <Key>
+      <PropertyRef Name="msMon" />
+      <PropertyRef Name="msSinhVien" />
+    </Key>
+    <Property Name="msMon" Type="int" Nullable="false" />
+    <Property Name="msSinhVien" Type="int" Nullable="false" />
+    <Property Name="NgayKetThucMon" Type="date" />
+    <Property Name="NgayDangKy" Type="date" />
+  </EntityType>
+  <EntityType Name="GiaoVien">
+    <Key>
+      <PropertyRef Name="msGV" />
+    </Key>
+    <Property Name="msGV" Type="int" Nullable="false" />
+    <Property Name="hoTen" Type="nvarchar" MaxLength="100" />
+    <Property Name="tuoi" Type="int" />
+    <Property Name="gioiTinh" Type="nvarchar" MaxLength="10" />
+    <Property Name="msGiaoVienQL" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="KetQua">
+    <Key>
+      <PropertyRef Name="msMon" />
+      <PropertyRef Name="msSinhVien" />
+    </Key>
+    <Property Name="msMon" Type="int" Nullable="false" />
+    <Property Name="msSinhVien" Type="int" Nullable="false" />
+    <Property Name="Diem" Type="float" />
+  </EntityType>
+  <EntityType Name="Khoa">
+    <Key>
+      <PropertyRef Name="maKhoa" />
+    </Key>
+    <Property Name="diaDiem" Type="nvarchar" MaxLength="50" />
+    <Property Name="tenKhoa" Type="nvarchar" MaxLength="50" />
+    <Property Name="maKhoa" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Lop">
+    <Key>
+      <PropertyRef Name="maLop" />
+    </Key>
+    <Property Name="maLop" Type="int" Nullable="false" />
+    <Property Name="tenLop" Type="nvarchar" MaxLength="50" />
+    <Property Name="phongHoc" Type="nchar" MaxLength="10" />
+    <Property Name="msKhoa" Type="int" />
+    <Property Name="msGiaoVienCN" Type="int" />
+  </EntityType>
+  <EntityType Name="MonHoc">
+    <Key>
+      <PropertyRef Name="msMon" />
+    </Key>
+    <Property Name="tenMonHoc" Type="nvarchar" MaxLength="100" />
+    <Property Name="msMon" Type="int" Nullable="false" />
+    <Property Name="msKhoa" Type="int" />
+  </EntityType>
+  <EntityType Name="SinhVien">
+    <Key>
+      <PropertyRef Name="mssv" />
+    </Key>
+    <Property Name="diaChi" Type="nvarchar" MaxLength="200" />
+    <Property Name="gioiTinh" Type="nvarchar" MaxLength="10" />
+    <Property Name="tuoi" Type="int" />
+    <Property Name="hoTen" Type="nvarchar" MaxLength="50" />
+    <Property Name="sdt" Type="int" />
+    <Property Name="mssv" Type="int" Nullable="false" />
+    <Property Name="ngaySinh" Type="date" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="ThanNhan">
+    <Key>
+      <PropertyRef Name="tenThanNhan" />
+    </Key>
+    <Property Name="tenThanNhan" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="gioiTinh" Type="nvarchar" MaxLength="10" />
+    <Property Name="diaChi" Type="nvarchar" MaxLength="100" />
+    <Property Name="tuoi" Type="int" />
+    <Property Name="quanHe" Type="nvarchar" MaxLength="100" />
+    <Property Name="msSinhVien" Type="int" />
+  </EntityType>
+  <Association Name="FK_DangKy_MonHoc">
+    <End Role="MonHoc" Type="Self.MonHoc" Multiplicity="1" />
+    <End Role="DangKy" Type="Self.DangKy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MonHoc">
+        <PropertyRef Name="msMon" />
+      </Principal>
+      <Dependent Role="DangKy">
+        <PropertyRef Name="msMon" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DangKy_SinhVien">
+    <End Role="SinhVien" Type="Self.SinhVien" Multiplicity="1" />
+    <End Role="DangKy" Type="Self.DangKy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SinhVien">
+        <PropertyRef Name="mssv" />
+      </Principal>
+      <Dependent Role="DangKy">
+        <PropertyRef Name="msSinhVien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KetQua_MonHoc">
+    <End Role="MonHoc" Type="Self.MonHoc" Multiplicity="1" />
+    <End Role="KetQua" Type="Self.KetQua" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MonHoc">
+        <PropertyRef Name="msMon" />
+      </Principal>
+      <Dependent Role="KetQua">
+        <PropertyRef Name="msMon" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KetQua_SinhVien">
+    <End Role="SinhVien" Type="Self.SinhVien" Multiplicity="1" />
+    <End Role="KetQua" Type="Self.KetQua" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SinhVien">
+        <PropertyRef Name="mssv" />
+      </Principal>
+      <Dependent Role="KetQua">
+        <PropertyRef Name="msSinhVien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Lop_GiaoVien">
+    <End Role="GiaoVien" Type="Self.GiaoVien" Multiplicity="0..1" />
+    <End Role="Lop" Type="Self.Lop" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GiaoVien">
+        <PropertyRef Name="msGV" />
+      </Principal>
+      <Dependent Role="Lop">
+        <PropertyRef Name="msGiaoVienCN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Lop_Khoa">
+    <End Role="Khoa" Type="Self.Khoa" Multiplicity="0..1" />
+    <End Role="Lop" Type="Self.Lop" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Khoa">
+        <PropertyRef Name="maKhoa" />
+      </Principal>
+      <Dependent Role="Lop">
+        <PropertyRef Name="msKhoa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MonHoc_Khoa">
+    <End Role="Khoa" Type="Self.Khoa" Multiplicity="0..1" />
+    <End Role="MonHoc" Type="Self.MonHoc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Khoa">
+        <PropertyRef Name="maKhoa" />
+      </Principal>
+      <Dependent Role="MonHoc">
+        <PropertyRef Name="msKhoa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ThanNhan_SinhVien">
+    <End Role="SinhVien" Type="Self.SinhVien" Multiplicity="0..1" />
+    <End Role="ThanNhan" Type="Self.ThanNhan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SinhVien">
+        <PropertyRef Name="mssv" />
+      </Principal>
+      <Dependent Role="ThanNhan">
+        <PropertyRef Name="msSinhVien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DoAn_QLSVModelStoreContainer">
+    <EntitySet Name="DangKy" EntityType="Self.DangKy" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GiaoVien" EntityType="Self.GiaoVien" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KetQua" EntityType="Self.KetQua" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Khoa" EntityType="Self.Khoa" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Lop" EntityType="Self.Lop" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MonHoc" EntityType="Self.MonHoc" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SinhVien" EntityType="Self.SinhVien" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ThanNhan" EntityType="Self.ThanNhan" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_DangKy_MonHoc" Association="Self.FK_DangKy_MonHoc">
+      <End Role="MonHoc" EntitySet="MonHoc" />
+      <End Role="DangKy" EntitySet="DangKy" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DangKy_SinhVien" Association="Self.FK_DangKy_SinhVien">
+      <End Role="SinhVien" EntitySet="SinhVien" />
+      <End Role="DangKy" EntitySet="DangKy" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KetQua_MonHoc" Association="Self.FK_KetQua_MonHoc">
+      <End Role="MonHoc" EntitySet="MonHoc" />
+      <End Role="KetQua" EntitySet="KetQua" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KetQua_SinhVien" Association="Self.FK_KetQua_SinhVien">
+      <End Role="SinhVien" EntitySet="SinhVien" />
+      <End Role="KetQua" EntitySet="KetQua" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Lop_GiaoVien" Association="Self.FK_Lop_GiaoVien">
+      <End Role="GiaoVien" EntitySet="GiaoVien" />
+      <End Role="Lop" EntitySet="Lop" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Lop_Khoa" Association="Self.FK_Lop_Khoa">
+      <End Role="Khoa" EntitySet="Khoa" />
+      <End Role="Lop" EntitySet="Lop" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MonHoc_Khoa" Association="Self.FK_MonHoc_Khoa">
+      <End Role="Khoa" EntitySet="Khoa" />
+      <End Role="MonHoc" EntitySet="MonHoc" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ThanNhan_SinhVien" Association="Self.FK_ThanNhan_SinhVien">
+      <End Role="SinhVien" EntitySet="SinhVien" />
+      <End Role="ThanNhan" EntitySet="ThanNhan" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

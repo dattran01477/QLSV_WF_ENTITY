@@ -102,20 +102,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BL\BLDangKi.cs" />
     <Compile Include="BL\BLGiaoVien.cs" />
     <Compile Include="BL\BlKetQua.cs" />
     <Compile Include="BL\BLKhoa.cs" />
     <Compile Include="BL\BLMonHoc.cs" />
     <Compile Include="BL\BLNamHoc.cs" />
+    <Compile Include="BL\BLPhanCong.cs" />
     <Compile Include="BL\BLSinhVien.cs" />
     <Compile Include="BL\BLLopHoc.cs" />
     <Compile Include="BL\BLUser.cs" />
+    <Compile Include="BL\KetQua.cs" />
     <Compile Include="BL\Users.cs" />
-    <Compile Include="BL\XtraReport1.cs">
+    <Compile Include="BL\XtraReport.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="BL\XtraReport1.Designer.cs">
-      <DependentUpon>XtraReport1.cs</DependentUpon>
+    <Compile Include="BL\XtraReport.Designer.cs">
+      <DependentUpon>XtraReport.cs</DependentUpon>
     </Compile>
     <Compile Include="Data\ChucVu.cs">
       <DependentUpon>DoAnQLSV.tt</DependentUpon>
@@ -168,6 +171,18 @@
     <Compile Include="Views\CapNhat.Designer.cs">
       <DependentUpon>CapNhat.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\ChaoMung.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ChaoMung.Designer.cs">
+      <DependentUpon>ChaoMung.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DangKyMonHoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\DangKyMonHoc.Designer.cs">
+      <DependentUpon>DangKyMonHoc.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\DangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -218,11 +233,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="BL\XtraReport1.resx">
-      <DependentUpon>XtraReport1.cs</DependentUpon>
+    <EmbeddedResource Include="BL\XtraReport.resx">
+      <DependentUpon>XtraReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\CapNhat.resx">
       <DependentUpon>CapNhat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ChaoMung.resx">
+      <DependentUpon>ChaoMung.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\DangKyMonHoc.resx">
+      <DependentUpon>DangKyMonHoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\DangNhap.resx">
       <DependentUpon>DangNhap.cs</DependentUpon>
@@ -268,6 +289,10 @@
       <DependentUpon>DoAnQLSV.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\DoAnCuoiKyWF.BL.KetQua.datasource" />
+    <None Include="Properties\DataSources\DoAnCuoiKyWF.BL.KQDanhSachMonHocCuaSV.datasource" />
+    <None Include="Properties\DataSources\DoAnCuoiKyWF.Data.GiaoVien.datasource" />
+    <None Include="Properties\DataSources\DoAnCuoiKyWF.Data.KetQua.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -356,6 +381,15 @@
       <DependentUpon>DoAnQLSV.edmx</DependentUpon>
       <LastGenOutput>DoAnQLSV.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\update.png" />
+    <None Include="Resources\searchperson.png" />
+    <None Include="Resources\save.png" />
+    <None Include="Resources\muiTenTrai.png" />
+    <None Include="Resources\muiTenPhai.png" />
+    <None Include="Resources\insert.png" />
+    <None Include="Resources\delete.png" />
+    <None Include="Resources\Đăng Ký.png" />
+    <None Include="Resources\searchmark.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

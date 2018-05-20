@@ -312,7 +312,6 @@
             this.btnSua.Size = new System.Drawing.Size(41, 29);
             this.btnSua.TabIndex = 1;
             this.btnSua.Text = "Sửa";
-            this.btnSua.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // btnXoa
             // 
@@ -321,7 +320,6 @@
             this.btnXoa.Size = new System.Drawing.Size(41, 29);
             this.btnXoa.TabIndex = 1;
             this.btnXoa.Text = "Xóa";
-            this.btnXoa.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // btnHuy
             // 
@@ -330,7 +328,7 @@
             this.btnHuy.Size = new System.Drawing.Size(41, 29);
             this.btnHuy.TabIndex = 1;
             this.btnHuy.Text = "Hủy";
-            this.btnHuy.Click += new System.EventHandler(this.simpleButton1_Click);
+            this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
             // 
             // btnThem
             // 
@@ -339,7 +337,7 @@
             this.btnThem.Size = new System.Drawing.Size(41, 29);
             this.btnThem.TabIndex = 1;
             this.btnThem.Text = "Thêm";
-            this.btnThem.Click += new System.EventHandler(this.simpleButton1_Click);
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // btnLuu
             // 
@@ -348,7 +346,7 @@
             this.btnLuu.Size = new System.Drawing.Size(41, 29);
             this.btnLuu.TabIndex = 1;
             this.btnLuu.Text = "Lưu";
-            this.btnLuu.Click += new System.EventHandler(this.simpleButton1_Click);
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
             // navigationPaneNamHoc
             // 

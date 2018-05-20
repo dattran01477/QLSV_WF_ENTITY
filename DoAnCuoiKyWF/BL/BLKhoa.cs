@@ -132,6 +132,23 @@ namespace DoAnCuoiKyWF.BL
 
         }
 
+        public IQueryable<Data.MonHoc> LayDanhSachMonHocKhoaList(string tenKhoa)
+        {
+            Data.DoAn_QLSVEntities1 qlSV = new Data.DoAn_QLSVEntities1();
+            var msKhoa = (from c in qlSV.Khoas
+                          where c.tenKhoa == tenKhoa
+                          select c.maKhoa).SingleOrDefault();
+            var gv = from c in qlSV.MonHocs
+                     where c.msKhoa == msKhoa
+                     select c;
+
+           
+
+           
+            return gv;
+
+        }
+
 
     }
     

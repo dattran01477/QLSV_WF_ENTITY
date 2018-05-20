@@ -13,37 +13,64 @@ namespace DoAnCuoiKyWF.BL
 {
     class BlKetQua
     {
-        public DataTable LayKetQua()
+        public List<BL.KetQua> LayKetQua(int ms)
         {
             Data.DoAn_QLSVEntities1 qlSV = new Data.DoAn_QLSVEntities1();
-            var gv = from p in qlSV.KetQuas
-                     select p;
-
-            DataTable tb = new DataTable();
-            tb.Columns.Add("msMon");
-            tb.Columns.Add("msSinhVien");
-
-            tb.Columns.Add("Diem");
-
+            var kq = (from p in qlSV.KetQuas
+                      where p.msSinhVien == ms
+                      select new BL.KetQua
+                      {
+                          MsSV = p.msSinhVien,
+                          Diem = p.Diem,
+                          MsMon = p.msMon,
+                          TenSinhVien = p.SinhVien.hoTen,
+                          TenMonHoc = p.MonHoc.tenMonHoc,
+                          NamHoc = p.NamHoc.tenNamHoc
+                          
+                      });
+            List<BL.KetQua> kq1 = new List<KetQua>();
+         
           
-
-            foreach (var i in gv)
+            kq1.AddRange(kq.ToList());
+            foreach (var a in kq1)
             {
-                tb.Rows.Add(i.msMon,i.msSinhVien,i.Diem);
+                if (a.Diem >= 5 && a.Diem <= 10)
+                {
+                    a.QuaMon = true;
+                }
+                else
+                    if (a.Diem < 5)
+                {
+                    a.QuaMon = false;
+                }
             }
 
+            return kq1;
+        }
+        public DataTable LayKetQuaDatatable(int ms)
+        {
+            Data.DoAn_QLSVEntities1 qlSV = new Data.DoAn_QLSVEntities1();
+            var a = (from p in qlSV.SinhViens
+                     where p.mssv == ms
+                     select p.KetQuas).SingleOrDefault().ToList();
+            DataTable tb = new DataTable();
+            tb.Columns.Add("tenMonHoc");
+            tb.Columns.Add("diem");
+
+            foreach(var b in a)
+            {
+                tb.Rows.Add(b.MonHoc.tenMonHoc, b.Diem);
+            }
             return tb;
 
-
-
-
         }
-        public void ThemDiem(string msSinhVien,string msMonTemp,int diem)
+        public void ThemDiem(string msSinhVien,string msMonTemp,int diem,string msNamHoc)
         {
             Data.DoAn_QLSVEntities1 qlSV = new Data.DoAn_QLSVEntities1();
             Data.KetQua kq = new Data.KetQua();
             int ms = int.Parse(msSinhVien);
             int msMon = int.Parse(msMonTemp);
+          
             bool isDangKy = false;
     
 
@@ -64,6 +91,7 @@ namespace DoAnCuoiKyWF.BL
                 if(a.msMon==msMon)
                 {
                     isDangKy =true;
+                    
                     break;
                 } 
             }
@@ -74,11 +102,12 @@ namespace DoAnCuoiKyWF.BL
                          where b.msMon == msMon && b.msSinhVien == ms
                          select b).FirstOrDefault();
 
-                if(a.Diem==null)
+                if(a==null)
                 {
                     kq.msSinhVien = ms;
                     kq.msMon = msMon;
                     kq.Diem = diem;
+                    kq.msNamHoc = msNamHoc;
                     qlSV.KetQuas.Add(kq);
                     qlSV.SaveChanges();
                     MessageBox.Show("Thanh Cong");
@@ -95,6 +124,16 @@ namespace DoAnCuoiKyWF.BL
            
 
 
+        }
+        public double? TinhDiemTB(int msSV)
+        {
+            Data.DoAn_QLSVEntities1 qlSV = new Data.DoAn_QLSVEntities1();
+            var a = (from b in qlSV.SinhViens
+                     where b.mssv == msSV
+                     select b).SingleOrDefault();
+            double? dTB = a.KetQuas.Average(x => x.Diem);
+
+            return dTB;
         }
     }
 }

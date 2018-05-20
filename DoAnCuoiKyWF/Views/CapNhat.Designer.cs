@@ -33,19 +33,19 @@
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
             this.lsvDanhSachChon = new System.Windows.Forms.ListView();
-            this.msTK = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.tenTK = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.msTK2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tenTK2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.lsvDsChuaCoTKGV = new System.Windows.Forms.ListView();
-            this.maGV = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.tenGV = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
-            this.btnChuyen = new DevExpress.XtraEditors.SimpleButton();
+            this.maTK1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tenTK1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.label1 = new System.Windows.Forms.Label();
             this.txtMSGV = new System.Windows.Forms.TextBox();
             this.btnTim = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
+            this.btnChuyen = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
@@ -101,24 +101,24 @@
             // lsvDanhSachChon
             // 
             this.lsvDanhSachChon.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.msTK,
-            this.tenTK});
+            this.msTK2,
+            this.tenTK2});
             this.lsvDanhSachChon.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lsvDanhSachChon.FullRowSelect = true;
             this.lsvDanhSachChon.GridLines = true;
-            this.lsvDanhSachChon.Location = new System.Drawing.Point(2, 26);
+            this.lsvDanhSachChon.Location = new System.Drawing.Point(2, 25);
             this.lsvDanhSachChon.Name = "lsvDanhSachChon";
-            this.lsvDanhSachChon.Size = new System.Drawing.Size(324, 489);
+            this.lsvDanhSachChon.Size = new System.Drawing.Size(324, 490);
             this.lsvDanhSachChon.TabIndex = 0;
             this.lsvDanhSachChon.UseCompatibleStateImageBehavior = false;
             // 
-            // msTK
+            // msTK2
             // 
-            this.msTK.Text = "Mã Số GV";
+            this.msTK2.Text = "Mã Số Tài Khoản";
             // 
-            // tenTK
+            // tenTK2
             // 
-            this.tenTK.Text = "Tên Giáo Viên";
+            this.tenTK2.Text = "Tên Tài Khoản";
             // 
             // groupControl2
             // 
@@ -132,43 +132,25 @@
             // lsvDsChuaCoTKGV
             // 
             this.lsvDsChuaCoTKGV.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.maGV,
-            this.tenGV});
+            this.maTK1,
+            this.tenTK1});
             this.lsvDsChuaCoTKGV.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lsvDsChuaCoTKGV.FullRowSelect = true;
             this.lsvDsChuaCoTKGV.GridLines = true;
-            this.lsvDsChuaCoTKGV.Location = new System.Drawing.Point(2, 26);
+            this.lsvDsChuaCoTKGV.Location = new System.Drawing.Point(2, 25);
             this.lsvDsChuaCoTKGV.Name = "lsvDsChuaCoTKGV";
-            this.lsvDsChuaCoTKGV.Size = new System.Drawing.Size(323, 489);
+            this.lsvDsChuaCoTKGV.Size = new System.Drawing.Size(323, 490);
             this.lsvDsChuaCoTKGV.TabIndex = 0;
             this.lsvDsChuaCoTKGV.UseCompatibleStateImageBehavior = false;
             // 
-            // maGV
+            // maTK1
             // 
-            this.maGV.Text = "Mã Giáo Viên";
+            this.maTK1.Text = "Mã Số Tài Khoản";
             // 
-            // tenGV
+            // tenTK1
             // 
-            this.tenGV.Text = "Tên Giáo Viên";
-            this.tenGV.Width = 100;
-            // 
-            // simpleButton2
-            // 
-            this.simpleButton2.Location = new System.Drawing.Point(379, 317);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(75, 23);
-            this.simpleButton2.TabIndex = 11;
-            this.simpleButton2.Text = "<<<<";
-            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
-            // 
-            // btnChuyen
-            // 
-            this.btnChuyen.Location = new System.Drawing.Point(379, 273);
-            this.btnChuyen.Name = "btnChuyen";
-            this.btnChuyen.Size = new System.Drawing.Size(75, 23);
-            this.btnChuyen.TabIndex = 10;
-            this.btnChuyen.Text = ">>>>";
-            this.btnChuyen.Click += new System.EventHandler(this.simpleButton1_Click);
+            this.tenTK1.Text = "Tên Tài Khoản";
+            this.tenTK1.Width = 100;
             // 
             // panelControl2
             // 
@@ -212,12 +194,40 @@
             // 
             // btnTim
             // 
-            this.btnTim.Location = new System.Drawing.Point(85, 72);
+            this.btnTim.AutoSize = true;
+            this.btnTim.BackgroundImage = global::DoAnCuoiKyWF.Properties.Resources.searchperson;
+            this.btnTim.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnTim.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.btnTim.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnTim.Location = new System.Drawing.Point(229, 58);
             this.btnTim.Name = "btnTim";
-            this.btnTim.Size = new System.Drawing.Size(75, 23);
+            this.btnTim.Size = new System.Drawing.Size(20, 25);
             this.btnTim.TabIndex = 5;
-            this.btnTim.Text = "Tìm";
             this.btnTim.Click += new System.EventHandler(this.btnTim_Click);
+            // 
+            // simpleButton2
+            // 
+            this.simpleButton2.BackgroundImage = global::DoAnCuoiKyWF.Properties.Resources.muiTenTrai;
+            this.simpleButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.simpleButton2.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.simpleButton2.Location = new System.Drawing.Point(379, 317);
+            this.simpleButton2.Name = "simpleButton2";
+            this.simpleButton2.Size = new System.Drawing.Size(75, 23);
+            this.simpleButton2.TabIndex = 11;
+            this.simpleButton2.Text = "<<<<";
+            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
+            // 
+            // btnChuyen
+            // 
+            this.btnChuyen.BackgroundImage = global::DoAnCuoiKyWF.Properties.Resources.muiTenPhai;
+            this.btnChuyen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnChuyen.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.btnChuyen.Location = new System.Drawing.Point(379, 273);
+            this.btnChuyen.Name = "btnChuyen";
+            this.btnChuyen.Size = new System.Drawing.Size(75, 23);
+            this.btnChuyen.TabIndex = 10;
+            this.btnChuyen.Text = ">>>>";
+            this.btnChuyen.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // CapNhat
             // 
@@ -259,11 +269,11 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtMSGV;
         private DevExpress.XtraEditors.SimpleButton btnTim;
-        private System.Windows.Forms.ColumnHeader maGV;
-        private System.Windows.Forms.ColumnHeader tenGV;
+        private System.Windows.Forms.ColumnHeader maTK1;
+        private System.Windows.Forms.ColumnHeader tenTK1;
         private DevExpress.XtraEditors.SimpleButton simpleButton3;
-        private System.Windows.Forms.ColumnHeader msTK;
-        private System.Windows.Forms.ColumnHeader tenTK;
+        private System.Windows.Forms.ColumnHeader msTK2;
+        private System.Windows.Forms.ColumnHeader tenTK2;
         private DevExpress.XtraEditors.SimpleButton btnCapTaiKhoan;
     }
 }

@@ -78,6 +78,19 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lsvDSMonHocQLMH = new System.Windows.Forms.ListView();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.navigationPagePhanCong = new DevExpress.XtraBars.Navigation.NavigationPage();
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.cmbTenKhoaPhanCong = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnPhanCong = new DevExpress.XtraEditors.SimpleButton();
+            this.gctChonGiaoVien = new DevExpress.XtraEditors.GroupControl();
+            this.lsvGiaoVienPhanCong = new System.Windows.Forms.ListView();
+            this.msGV = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tenGV = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.gctChonMonHoc = new DevExpress.XtraEditors.GroupControl();
+            this.lsvMonHocPhanCong = new System.Windows.Forms.ListView();
+            this.msMonHoc = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tenMonHoc = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlKhoa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -100,6 +113,13 @@
             this.groupControlQuanLyMonHoc.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtMonHoc.Properties)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.navigationPagePhanCong.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
+            this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gctChonGiaoVien)).BeginInit();
+            this.gctChonGiaoVien.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gctChonMonHoc)).BeginInit();
+            this.gctChonMonHoc.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSua
@@ -413,13 +433,15 @@
             this.navigationPaneKhoa.Controls.Add(this.navigationPageQlKhoa);
             this.navigationPaneKhoa.Controls.Add(this.navigationThongTinChiTiet);
             this.navigationPaneKhoa.Controls.Add(this.navigationPageQuanLyMon);
+            this.navigationPaneKhoa.Controls.Add(this.navigationPagePhanCong);
             this.navigationPaneKhoa.Dock = System.Windows.Forms.DockStyle.Fill;
             this.navigationPaneKhoa.Location = new System.Drawing.Point(0, 0);
             this.navigationPaneKhoa.Name = "navigationPaneKhoa";
             this.navigationPaneKhoa.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] {
             this.navigationPageQlKhoa,
             this.navigationThongTinChiTiet,
-            this.navigationPageQuanLyMon});
+            this.navigationPageQuanLyMon,
+            this.navigationPagePhanCong});
             this.navigationPaneKhoa.RegularSize = new System.Drawing.Size(1082, 503);
             this.navigationPaneKhoa.SelectedPage = this.navigationPageQlKhoa;
             this.navigationPaneKhoa.Size = new System.Drawing.Size(1082, 503);
@@ -743,6 +765,118 @@
             this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "Tên Khoa Là Gì Điền Vào Đây";
             // 
+            // navigationPagePhanCong
+            // 
+            this.navigationPagePhanCong.Caption = "Phân Công Giáo Viên";
+            this.navigationPagePhanCong.Controls.Add(this.panelControl1);
+            this.navigationPagePhanCong.Name = "navigationPagePhanCong";
+            this.navigationPagePhanCong.Size = new System.Drawing.Size(832, 432);
+            // 
+            // panelControl1
+            // 
+            this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Style3D;
+            this.panelControl1.Controls.Add(this.cmbTenKhoaPhanCong);
+            this.panelControl1.Controls.Add(this.label4);
+            this.panelControl1.Controls.Add(this.btnPhanCong);
+            this.panelControl1.Controls.Add(this.gctChonGiaoVien);
+            this.panelControl1.Controls.Add(this.gctChonMonHoc);
+            this.panelControl1.Location = new System.Drawing.Point(3, 0);
+            this.panelControl1.Name = "panelControl1";
+            this.panelControl1.Size = new System.Drawing.Size(828, 429);
+            this.panelControl1.TabIndex = 0;
+            // 
+            // cmbTenKhoaPhanCong
+            // 
+            this.cmbTenKhoaPhanCong.FormattingEnabled = true;
+            this.cmbTenKhoaPhanCong.Location = new System.Drawing.Point(380, 29);
+            this.cmbTenKhoaPhanCong.Name = "cmbTenKhoaPhanCong";
+            this.cmbTenKhoaPhanCong.Size = new System.Drawing.Size(179, 24);
+            this.cmbTenKhoaPhanCong.TabIndex = 4;
+            this.cmbTenKhoaPhanCong.SelectedIndexChanged += new System.EventHandler(this.cmbTenKhoaPhanCong_SelectedIndexChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(284, 36);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(66, 17);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Tên Khoa";
+            // 
+            // btnPhanCong
+            // 
+            this.btnPhanCong.Location = new System.Drawing.Point(654, 384);
+            this.btnPhanCong.Name = "btnPhanCong";
+            this.btnPhanCong.Size = new System.Drawing.Size(75, 23);
+            this.btnPhanCong.TabIndex = 2;
+            this.btnPhanCong.Text = "Phân Công";
+            this.btnPhanCong.Click += new System.EventHandler(this.btnPhanCong_Click);
+            // 
+            // gctChonGiaoVien
+            // 
+            this.gctChonGiaoVien.Controls.Add(this.lsvGiaoVienPhanCong);
+            this.gctChonGiaoVien.Location = new System.Drawing.Point(151, 102);
+            this.gctChonGiaoVien.Name = "gctChonGiaoVien";
+            this.gctChonGiaoVien.Size = new System.Drawing.Size(221, 262);
+            this.gctChonGiaoVien.TabIndex = 1;
+            this.gctChonGiaoVien.Text = "Chọn Giáo Viên";
+            // 
+            // lsvGiaoVienPhanCong
+            // 
+            this.lsvGiaoVienPhanCong.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.msGV,
+            this.tenGV});
+            this.lsvGiaoVienPhanCong.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lsvGiaoVienPhanCong.FullRowSelect = true;
+            this.lsvGiaoVienPhanCong.GridLines = true;
+            this.lsvGiaoVienPhanCong.HideSelection = false;
+            this.lsvGiaoVienPhanCong.Location = new System.Drawing.Point(2, 26);
+            this.lsvGiaoVienPhanCong.Name = "lsvGiaoVienPhanCong";
+            this.lsvGiaoVienPhanCong.Size = new System.Drawing.Size(217, 234);
+            this.lsvGiaoVienPhanCong.TabIndex = 0;
+            this.lsvGiaoVienPhanCong.UseCompatibleStateImageBehavior = false;
+            // 
+            // msGV
+            // 
+            this.msGV.Text = "Mã Số GV";
+            // 
+            // tenGV
+            // 
+            this.tenGV.Text = "Tên GV";
+            // 
+            // gctChonMonHoc
+            // 
+            this.gctChonMonHoc.Controls.Add(this.lsvMonHocPhanCong);
+            this.gctChonMonHoc.Location = new System.Drawing.Point(508, 102);
+            this.gctChonMonHoc.Name = "gctChonMonHoc";
+            this.gctChonMonHoc.Size = new System.Drawing.Size(221, 262);
+            this.gctChonMonHoc.TabIndex = 0;
+            this.gctChonMonHoc.Text = "Chọn Môn Học";
+            // 
+            // lsvMonHocPhanCong
+            // 
+            this.lsvMonHocPhanCong.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.msMonHoc,
+            this.tenMonHoc});
+            this.lsvMonHocPhanCong.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lsvMonHocPhanCong.FullRowSelect = true;
+            this.lsvMonHocPhanCong.GridLines = true;
+            this.lsvMonHocPhanCong.HideSelection = false;
+            this.lsvMonHocPhanCong.Location = new System.Drawing.Point(2, 26);
+            this.lsvMonHocPhanCong.Name = "lsvMonHocPhanCong";
+            this.lsvMonHocPhanCong.Size = new System.Drawing.Size(217, 234);
+            this.lsvMonHocPhanCong.TabIndex = 0;
+            this.lsvMonHocPhanCong.UseCompatibleStateImageBehavior = false;
+            this.lsvMonHocPhanCong.SelectedIndexChanged += new System.EventHandler(this.lsvMonHocPhanCong_SelectedIndexChanged);
+            // 
+            // msMonHoc
+            // 
+            this.msMonHoc.Text = "Mã Số Môn";
+            // 
+            // tenMonHoc
+            // 
+            this.tenMonHoc.Text = "Tên Môn học";
+            // 
             // Khoa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -781,6 +915,14 @@
             this.groupControlQuanLyMonHoc.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtMonHoc.Properties)).EndInit();
             this.groupBox1.ResumeLayout(false);
+            this.navigationPagePhanCong.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
+            this.panelControl1.ResumeLayout(false);
+            this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gctChonGiaoVien)).EndInit();
+            this.gctChonGiaoVien.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gctChonMonHoc)).EndInit();
+            this.gctChonMonHoc.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -836,5 +978,18 @@
         private System.Windows.Forms.ListView lsvMonHoc;
         private System.Windows.Forms.ListView lsvGV;
         private System.Windows.Forms.ListView lsvDSMonHocQLMH;
+        private DevExpress.XtraBars.Navigation.NavigationPage navigationPagePhanCong;
+        private DevExpress.XtraEditors.PanelControl panelControl1;
+        private System.Windows.Forms.Label label4;
+        private DevExpress.XtraEditors.SimpleButton btnPhanCong;
+        private DevExpress.XtraEditors.GroupControl gctChonGiaoVien;
+        private DevExpress.XtraEditors.GroupControl gctChonMonHoc;
+        private System.Windows.Forms.ComboBox cmbTenKhoaPhanCong;
+        private System.Windows.Forms.ListView lsvGiaoVienPhanCong;
+        private System.Windows.Forms.ColumnHeader msGV;
+        private System.Windows.Forms.ColumnHeader tenGV;
+        private System.Windows.Forms.ListView lsvMonHocPhanCong;
+        private System.Windows.Forms.ColumnHeader msMonHoc;
+        private System.Windows.Forms.ColumnHeader tenMonHoc;
     }
 }

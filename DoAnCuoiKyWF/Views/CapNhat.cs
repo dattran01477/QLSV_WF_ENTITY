@@ -13,28 +13,51 @@ namespace DoAnCuoiKyWF
 {
     public partial class CapNhat : DevExpress.XtraEditors.XtraForm
     {
+        string gvOrSVUpdate;
+
+        public string GvOrSVUpdate { get => gvOrSVUpdate; set => gvOrSVUpdate = value; }
+
         public CapNhat()
         {
             InitializeComponent();
         }
+        public CapNhat(string gvOrSV)
+        {
+            InitializeComponent();
+            this.GvOrSVUpdate = gvOrSV;
+            
+        }
         public void loadData()
         {
             BL.Users users = new BL.Users();
-            DataTable dt = users.DanhSachChuaCoTk();
-
-            
+            DataTable dt = users.DanhSachChuaCoTk(gvOrSVUpdate);
 
             int i = 0;
 
-
-            foreach (DataRow row in dt.Rows)
-
+            if(gvOrSVUpdate=="GV")
             {
-                lsvDsChuaCoTKGV.Items.Add(row["msGV"].ToString());
-               
-                lsvDsChuaCoTKGV.Items[i].SubItems.Add(row["tenGV"].ToString());
-                i++;
+                foreach (DataRow row in dt.Rows)
+
+                {
+                    lsvDsChuaCoTKGV.Items.Add(row["msGV"].ToString());
+
+                    lsvDsChuaCoTKGV.Items[i].SubItems.Add(row["tenGV"].ToString());
+                    i++;
+                }
             }
+            else
+                if(gvOrSVUpdate=="SV")
+            {
+                foreach (DataRow row in dt.Rows)
+
+                {
+                    lsvDsChuaCoTKGV.Items.Add(row["msSV"].ToString());
+
+                    lsvDsChuaCoTKGV.Items[i].SubItems.Add(row["tenSV"].ToString());
+                    i++;
+                }
+            }
+            
         }
 
         private void CapNhat_Load(object sender, EventArgs e)
@@ -50,9 +73,9 @@ namespace DoAnCuoiKyWF
             lsvDanhSachChon.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
 
 
-
-            lsvDsChuaCoTKGV.Columns.Add("Mã Số GV");
-            lsvDsChuaCoTKGV.Columns.Add("Tên GV");
+            //if(gvOrSVUpdate=="GV")
+            //lsvDsChuaCoTKGV.Columns.Add("Mã Số GV");
+            //lsvDsChuaCoTKGV.Columns.Add("Tên GV");
             loadData();
         }
         private void TimTK()
@@ -120,12 +143,22 @@ namespace DoAnCuoiKyWF
         private void btnCapTaiKhoan_Click(object sender, EventArgs e)
         {
             BL.Users users = new BL.Users();
+            if(gvOrSVUpdate=="GV")
             foreach(ListViewItem a in lsvDanhSachChon.Items)
             {
                 users.CapPhatTaiKhoan(a.Text.ToString(), "GV");
 
             }
-            
+            else
+                 if (gvOrSVUpdate == "SV")
+                foreach (ListViewItem a in lsvDanhSachChon.Items)
+                {
+                    users.CapPhatTaiKhoan(a.Text.ToString(), "SV");
+
+                }
+
+
+
         }
     }
 }

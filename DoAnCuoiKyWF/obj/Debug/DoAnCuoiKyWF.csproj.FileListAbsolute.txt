@@ -322,7 +322,9 @@ D:\lập trình wd\DoAnCuoiKyWF\DoAnCuoiKyWF\bin\Debug\de\DevExpress.Diagram.v17
 D:\lập trình wd\DoAnCuoiKyWF\DoAnCuoiKyWF\bin\Debug\es\DevExpress.Diagram.v17.1.Core.resources.dll
 D:\lập trình wd\DoAnCuoiKyWF\DoAnCuoiKyWF\bin\Debug\ja\DevExpress.Diagram.v17.1.Core.resources.dll
 D:\lập trình wd\DoAnCuoiKyWF\DoAnCuoiKyWF\bin\Debug\ru\DevExpress.Diagram.v17.1.Core.resources.dll
-D:\lập trình wd\DoAnCuoiKyWF\DoAnCuoiKyWF\obj\Debug\DoAnCuoiKyWF.BL.XtraReport1.resources
 D:\lập trình wd\DoAnCuoiKyWF\DoAnCuoiKyWF\obj\Debug\DoAnCuoiKyWF.DangNhap.resources
 D:\lập trình wd\DoAnCuoiKyWF\DoAnCuoiKyWF\bin\Debug\DevExpress.Images.v17.1.dll
 D:\lập trình wd\DoAnCuoiKyWF\DoAnCuoiKyWF\obj\Debug\DoAnCuoiKyWF.CapNhat.resources
+D:\lập trình wd\DoAnCuoiKyWF\DoAnCuoiKyWF\obj\Debug\DoAnCuoiKyWF.DangKyMonHoc.resources
+D:\lập trình wd\DoAnCuoiKyWF\DoAnCuoiKyWF\obj\Debug\DoAnCuoiKyWF.BL.XtraReport.resources
+D:\lập trình wd\DoAnCuoiKyWF\DoAnCuoiKyWF\obj\Debug\DoAnCuoiKyWF.Views.ChaoMung.resources

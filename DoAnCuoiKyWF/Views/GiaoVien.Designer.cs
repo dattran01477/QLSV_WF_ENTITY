@@ -77,6 +77,7 @@
             this.btnSua.Size = new System.Drawing.Size(41, 29);
             this.btnSua.TabIndex = 1;
             this.btnSua.Text = "Sửa";
+            this.btnSua.ToolTip = "Sửa";
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnXoa

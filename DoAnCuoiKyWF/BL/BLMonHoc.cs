@@ -46,6 +46,15 @@ namespace DoAnCuoiKyWF.BL
 
 
         }
+        public int MSMonHoc(string ten)
+        {
+            Data.DoAn_QLSVEntities1 qlSV = new Data.DoAn_QLSVEntities1();
+            var a = (from b in qlSV.MonHocs
+                     where b.tenMonHoc == ten
+                     select b.msMon).FirstOrDefault();
+
+            return a;
+        }
         public void Them(string ten,string Khoa)
         {
 

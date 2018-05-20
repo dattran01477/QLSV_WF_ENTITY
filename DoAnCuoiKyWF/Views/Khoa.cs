@@ -157,6 +157,8 @@ namespace DoAnCuoiKyWF
             lsvDSMonHocQLMH.Columns.Add("Mã MH");
             lsvDSMonHocQLMH.Columns.Add("Tên Môn Học");
 
+           
+
             var diaDiemKhoa = (from p in khoa.LayDanhSachKhoa()
                           select p.diaDiem).Distinct();
             foreach (var i in diaDiemKhoa)
@@ -169,6 +171,7 @@ namespace DoAnCuoiKyWF
             {
                 cmbKhoaTTCT.Items.Add(i);
                 cmbTimTenKhoaQLMH.Items.Add(i);
+                cmbTenKhoaPhanCong.Items.Add(i);
             }
 
         }
@@ -275,6 +278,89 @@ namespace DoAnCuoiKyWF
            
             
             MessageBox.Show(lsvDSMonHocQLMH.SelectedIndices[0].ToString());
+        }
+
+        private void cmbTenKhoaPhanCong_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            BL.BLKhoa khoa = new BL.BLKhoa();
+            DataTable dt = khoa.LayDanhSachGVKhoa(cmbTenKhoaPhanCong.Text);
+            DataTable dt2 = khoa.LayDanhSachMonHocKhoa(cmbTenKhoaPhanCong.Text);
+
+
+
+            lsvGiaoVienPhanCong.View = View.Details;
+            lsvGiaoVienPhanCong.Items.Clear();
+            lsvGiaoVienPhanCong.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            lsvGiaoVienPhanCong.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+
+
+            lsvMonHocPhanCong.View = View.Details;
+            lsvMonHocPhanCong.Items.Clear();
+            lsvMonHocPhanCong.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            lsvMonHocPhanCong.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+
+
+            int i = 0;
+            int j = 0;
+
+            foreach (DataRow row in dt.Rows)
+
+            {
+
+                lsvGiaoVienPhanCong.Items.Add(row["MSGV"].ToString());
+
+                lsvGiaoVienPhanCong.Items[i].SubItems.Add(row["tenGV"].ToString());
+                i++;
+
+            }
+
+            foreach (DataRow row in dt2.Rows)
+
+            {
+
+                lsvMonHocPhanCong.Items.Add(row["msMonHoc"].ToString());
+
+                lsvMonHocPhanCong.Items[j].SubItems.Add(row["tenMonHoc"].ToString());
+                j++;
+
+            }
+
+        }
+
+        private void lsvMonHocPhanCong_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lsvGiaoVienPhanCong.Items[2].Selected)
+            {
+                MessageBox.Show("đang được chọn");
+            }
+            else
+                MessageBox.Show("không dc chọn");
+        }
+
+        private void btnPhanCong_Click(object sender, EventArgs e)
+        {
+            BL.BLPhanCong phanCong = new BL.BLPhanCong();
+            int msGVTemp=0;
+            int msMonHocTemp=0;
+            foreach (ListViewItem a in lsvGiaoVienPhanCong.Items)
+            {
+                if (a.Selected)
+                {
+                    msGVTemp = int.Parse(a.Text);
+                    foreach (ListViewItem r in lsvMonHocPhanCong.Items)
+                    {
+                        if (r.Selected)
+                        {
+                            msMonHocTemp = int.Parse(r.Text);
+                            phanCong.PhanCong(msGVTemp, msMonHocTemp);
+                            break;
+                        }
+
+
+                    }
+                    break;
+                }
+            }
         }
     }
 }

@@ -39,17 +39,23 @@ namespace DoAnCuoiKyWF.BL
 
 
         }
-        public void Them(string ten, String tuoi, String gt, string Khoa)
+        public void Them(string ten, DateTime tgBD, DateTime tgKT)
         {
-
-            Data.DoAn_QLSVEntities1 qlSV = new Data.DoAn_QLSVEntities1();
-            int ms = qlSV.GiaoViens.Max(x => x.msGV);
-            int msKhoaTemp = (from a in qlSV.Khoas
-                              where a.tenKhoa == Khoa
-                              select a.maKhoa).FirstOrDefault();
-            Data.GiaoVien gv = new Data.GiaoVien { msGV = ms + 1, hoTen = ten, tuoi = int.Parse(tuoi), gioiTinh = gt, msKhoa = msKhoaTemp };
-            qlSV.GiaoViens.Add(gv);
-            qlSV.SaveChanges();
+            try
+            {
+                Data.DoAn_QLSVEntities1 qlSV = new Data.DoAn_QLSVEntities1();
+                string ms = qlSV.NamHocs.Max(x => x.msNamHoc).Trim();
+                int ms1 = int.Parse(ms);
+                Data.NamHoc namHoc = new Data.NamHoc { tenNamHoc = ten, msNamHoc = (ms1 + 1).ToString(), tgBatDau = tgBD, tgKetThuc = tgKT };
+                qlSV.NamHocs.Add(namHoc);
+                qlSV.SaveChanges();
+                MessageBox.Show("Thành Công ");
+            }
+            catch
+            {
+                MessageBox.Show("Thất Bại");
+            }
+           
 
         }
         public void Xoa(string msGiaoVien)
@@ -85,6 +91,12 @@ namespace DoAnCuoiKyWF.BL
                 qlSV.SaveChanges();
             }
 
+        }
+        public string LayNamHocHienTai()
+        {
+            Data.DoAn_QLSVEntities1 qlSV = new Data.DoAn_QLSVEntities1();
+            var a = qlSV.NamHocs.Max(x => x.msNamHoc);
+            return a;
         }
     }
     

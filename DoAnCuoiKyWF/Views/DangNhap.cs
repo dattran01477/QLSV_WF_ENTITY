@@ -15,9 +15,11 @@ namespace DoAnCuoiKyWF
     {
         string chucVu = null;
         bool kt = false;
+        int msTK;
 
         public string ChucVu { get => chucVu; set => chucVu = value; }
         public bool Kt { get => kt; set => kt = value; }
+        public int MsTK { get => msTK; set => msTK = value; }
 
         public DangNhap()
         {
@@ -52,6 +54,7 @@ namespace DoAnCuoiKyWF
         {
             
             Kt = KiemTraDangNhap();
+            MsTK = int.Parse(txtTenDN.Text);
             if(Kt)
             {
                 this.Dispose();

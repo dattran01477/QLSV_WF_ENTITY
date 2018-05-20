@@ -100,7 +100,7 @@
       <PropertyRef Name="msTK" />
     </Key>
     <Property Name="msTK" Type="int" Nullable="false" />
-    <Property Name="password" Type="nchar" MaxLength="50" />
+    <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <Association Name="FK_ChucVu_user_pass1">
     <End Role="user_pass" Type="Self.user_pass" Multiplicity="1" />

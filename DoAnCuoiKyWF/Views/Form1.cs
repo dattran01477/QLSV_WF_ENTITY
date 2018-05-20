@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraReports.UI;
+using DevExpress;
 
 namespace DoAnCuoiKyWF
 {
@@ -15,9 +16,12 @@ namespace DoAnCuoiKyWF
         private string chucVu = null;
         private bool kt = false;
         private bool isDangNhap=false;
-
+        private int msTk;
+        private string msNamHoc = null;
         public bool Kt { get => kt; set => kt = value; }
         public string ChucVu { get => chucVu; set => chucVu = value; }
+        public int MsTk { get => msTk; set => msTk = value; }
+        public string MsNamHoc { get => msNamHoc; set => msNamHoc = value; }
 
         public Form1()
         {
@@ -103,7 +107,7 @@ namespace DoAnCuoiKyWF
             Form frm = kiemtraform(typeof(NhapDiem));
             if (frm == null)
             {
-                NhapDiem nhapDiem = new NhapDiem();
+                NhapDiem nhapDiem = new NhapDiem(MsNamHoc);
                 nhapDiem.MdiParent = this;
                 nhapDiem.Show();
             }
@@ -140,7 +144,7 @@ namespace DoAnCuoiKyWF
                 hocSinh.Show();
 
                 ///show form nhập điểm
-                NhapDiem nhapDiem = new NhapDiem();
+                NhapDiem nhapDiem = new NhapDiem(MsNamHoc);
                 nhapDiem.MdiParent = this;
                 nhapDiem.Show();
 
@@ -164,18 +168,16 @@ namespace DoAnCuoiKyWF
                 namHoc.MdiParent = this;
                 namHoc.Show();
 
-                ///show form Cập Nhật
-                CapNhat capNhat = new CapNhat();
-                capNhat.MdiParent = this;
-                capNhat.Show();
+               
+               
 
                
             }
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            btnBangDiemMonHoc.Enabled = false;
-            btnCapNhatTaiKhoan.Enabled = false;
+            btnDangKiMonHoc.Enabled = false;
+            btnCapNhatTaiKhoanGV.Enabled = false;
             btnDanhSachLopHoc.Enabled = false;
             btnHoSoGiaoVien.Enabled = false;
             btnHoSoKhoa.Enabled = false;
@@ -183,7 +185,7 @@ namespace DoAnCuoiKyWF
             btnNhapDiem.Enabled = false;
             btnPhanLopSinhVien.Enabled = false;
             btnThemSinhVien.Enabled = false;
-            btnThongKeHocVu.Enabled = false;
+            btnXuatBangDiem.Enabled = false;
             btnTimKiemSinhVien.Enabled = false;
             btnXemDiem.Enabled = false;
 
@@ -192,10 +194,16 @@ namespace DoAnCuoiKyWF
 
         private void btnThongKeHocVu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            BL.XtraReport1 baoCao = new BL.XtraReport1();
+           
+            List<BL.KetQua> kq = new List<BL.KetQua>();
+            BL.XtraReport rp = new BL.XtraReport();
+   
             BL.BlKetQua ketQua = new BL.BlKetQua();
-            baoCao.DataSource = ketQua.LayKetQua();
-            baoCao.ShowPreviewDialog();
+            kq= ketQua.LayKetQua(MsTk);
+            rp.DataSource = kq;
+
+
+            rp.ShowPreviewDialog();
         }
         private Form kiemtraform(Type ftype)
         {
@@ -222,7 +230,7 @@ namespace DoAnCuoiKyWF
                 btnNhapDiem.Enabled = true;
 
                 ///show form nhập điểm
-                NhapDiem nhapDiem = new NhapDiem();
+                NhapDiem nhapDiem = new NhapDiem(MsNamHoc);
                 nhapDiem.MdiParent = this;
                 nhapDiem.Show();
 
@@ -231,26 +239,23 @@ namespace DoAnCuoiKyWF
                 giaoVien.MdiParent = this;
                 giaoVien.Show();
             }
-            if(chucVu=="HS")
+            if(chucVu=="SV")
             {
-                btnBangDiemMonHoc.Enabled = true;
+                btnDangKiMonHoc.Enabled = true;
                 btnXemDiem.Enabled = true;
-                btnThongKeHocVu.Enabled = true;
-
-                ///show form học sinh
-                HocSinh hocSinh = new HocSinh();
-                hocSinh.MdiParent = this;
-                hocSinh.Show();
+                btnXuatBangDiem.Enabled = true;
 
                 ///show form nhập điểm
-                NhapDiem nhapDiem = new NhapDiem();
+                NhapDiem nhapDiem = new NhapDiem(MsNamHoc);
                 nhapDiem.MdiParent = this;
                 nhapDiem.Show();
+                
+                
             }
             if(chucVu=="AD")
             {
-                btnBangDiemMonHoc.Enabled = true;
-                btnCapNhatTaiKhoan.Enabled = true;
+                btnDangKiMonHoc.Enabled = true;
+                btnCapNhatTaiKhoanGV.Enabled = true;
                 btnDanhSachLopHoc.Enabled = true;
                 btnHoSoGiaoVien.Enabled = true;
                 btnHoSoKhoa.Enabled = true;
@@ -258,44 +263,51 @@ namespace DoAnCuoiKyWF
                 btnNhapDiem.Enabled = true;
                 btnPhanLopSinhVien.Enabled = true;
                 btnThemSinhVien.Enabled = true;
-                btnThongKeHocVu.Enabled = true;
+                btnXuatBangDiem.Enabled = true;
                 btnTimKiemSinhVien.Enabled = true;
                 btnXemDiem.Enabled = true;
 
-                ///show form học sinh
+                CapNhat capNhat = new CapNhat();
                 HocSinh hocSinh = new HocSinh();
+                NhapDiem nhapDiem = new NhapDiem(MsNamHoc);
+                GiaoVien giaoVien = new GiaoVien();
+                Khoa khoa = new Khoa();
+                LopHoc lopHoc = new LopHoc();
+                NamHoc namHoc = new NamHoc();
+
+                ///show form học sinh
+
                 hocSinh.MdiParent = this;
                 hocSinh.Show();
 
                 ///show form nhập điểm
-                NhapDiem nhapDiem = new NhapDiem();
+               
                 nhapDiem.MdiParent = this;
                 nhapDiem.Show();
 
                 ///show form giao viên
-                GiaoVien giaoVien = new GiaoVien();
+               
                 giaoVien.MdiParent = this;
                 giaoVien.Show();
 
                 /// show form khóa học
-                Khoa khoa = new Khoa();
+               
                 khoa.MdiParent = this;
                 khoa.Show();
 
                 /// show form lớp học
-                LopHoc lopHoc = new LopHoc();
+               
                 lopHoc.MdiParent = this;
                 lopHoc.Show();
 
                 /// show form năm học
-                NamHoc namHoc = new NamHoc();
+               
                 namHoc.MdiParent = this;
                 namHoc.Show();
 
                 ///show form Cập Nhật
-                CapNhat capNhat = new CapNhat();
-                capNhat.MdiParent = this;
-                capNhat.Show();
+               
+               
             }
            
             
@@ -311,27 +323,111 @@ namespace DoAnCuoiKyWF
 
         private void DangNhap_Disposed(object sender, EventArgs e)
         {
+            BL.Users users = new BL.Users();
+            BL.BLNamHoc namHoc = new BL.BLNamHoc();
+            msNamHoc = namHoc.LayNamHocHienTai();
             Kt = dangNhap.Kt;
             isDangNhap = Kt;
+            MsTk = dangNhap.MsTK;
             if(Kt)
             {
                 ChucVu = dangNhap.ChucVu;
                 PhanQuyen(ChucVu);
+                lbTenTaiKhoan.Visible = true;
+                lbTenTaiKhoan.Text = users.TimTenTaiKhoan(MsTk, ChucVu);
                 
 
             }
 
         }
 
-        private void btnCapNhatTaiKhoan_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-
-        }
+       
         private void KTDangNhap()
         {
             if(isDangNhap)
             {
 
+            }
+        }
+
+        private void barButtonItem7_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+           string chucVu = null;
+            kt = false;
+            isDangNhap = false;
+
+            btnDangKiMonHoc.Enabled = false;
+            btnCapNhatTaiKhoanGV.Enabled = false;
+            btnDanhSachLopHoc.Enabled = false;
+            btnHoSoGiaoVien.Enabled = false;
+            btnHoSoKhoa.Enabled = false;
+            btnKhaiBaoNamHoc.Enabled = false;
+            btnNhapDiem.Enabled = false;
+            btnPhanLopSinhVien.Enabled = false;
+            btnThemSinhVien.Enabled = false;
+            btnXuatBangDiem.Enabled = false;
+            btnTimKiemSinhVien.Enabled = false;
+            btnXemDiem.Enabled = false;
+
+            CapNhat capNhat = new CapNhat();
+            HocSinh hocSinh = new HocSinh();
+            NhapDiem nhapDiem = new NhapDiem();
+            GiaoVien giaoVien = new GiaoVien();
+            Khoa khoa = new Khoa();
+            LopHoc lopHoc = new LopHoc();
+            NamHoc namHoc = new NamHoc();
+
+            
+            hocSinh.Visible = false;
+            nhapDiem.Visible = false;
+            giaoVien.Visible = false;
+            khoa.Visible = false;
+            lopHoc.Visible = false;
+            namHoc.Visible = false;
+        }
+
+        private void btnCapNhatTaiKhoanGV_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = kiemtraform(typeof(CapNhat));
+            if (frm == null)
+            {
+                CapNhat khoa = new CapNhat("GV");
+                khoa.MdiParent = this;
+                khoa.Show();
+            }
+            else
+            {
+                frm.Activate();
+            }
+        }
+
+        private void btnCapNhatTaiKhoanSV_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = kiemtraform(typeof(CapNhat));
+            if (frm == null)
+            {
+                CapNhat khoa = new CapNhat("SV");
+                khoa.MdiParent = this;
+                khoa.Show();
+            }
+            else
+            {
+                frm.Activate();
+            }
+        }
+
+        private void btnDangKiMonHoc_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = kiemtraform(typeof(DangKyMonHoc));
+            if (frm == null)
+            {
+                DangKyMonHoc khoa = new DangKyMonHoc(MsTk,MsNamHoc);
+                khoa.MdiParent = this;
+                khoa.Show();
+            }
+            else
+            {
+                frm.Activate();
             }
         }
     }

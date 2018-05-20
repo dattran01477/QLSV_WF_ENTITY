@@ -175,7 +175,7 @@
       <PropertyRef Name="msTK" />
     </Key>
     <Property Name="msTK" Type="Int32" Nullable="false" />
-    <Property Name="password" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="ChucVu" Relationship="DoAn_QLSVModel.FK_ChucVu_user_pass1" FromRole="user_pass" ToRole="ChucVu" />
   </EntityType>
   <Association Name="FK_ChucVu_user_pass1">
